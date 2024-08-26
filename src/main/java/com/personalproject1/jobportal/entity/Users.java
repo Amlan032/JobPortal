@@ -17,7 +17,7 @@ public class Users {
     private Integer userId;
 
     @Column(name = "email", unique = true)
-    private String emailId;
+    private String email;
 
     @Column(name = "is_active")
     private boolean isActive;
@@ -39,9 +39,9 @@ public class Users {
     public Users() {
     }
 
-    public Users(Integer userId, String emailId, boolean isActive, String password, Date registrationDate, UsersType userTypeId) {
+    public Users(Integer userId, String email, boolean isActive, String password, Date registrationDate, UsersType userTypeId) {
         this.userId = userId;
-        this.emailId = emailId;
+        this.email = email;
         this.isActive = isActive;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -58,12 +58,12 @@ public class Users {
         this.userId = userId;
     }
 
-    public String getEmailId() {
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isActive() {
@@ -104,7 +104,7 @@ public class Users {
     public String toString() {
         return "Users{" +
                 "userId=" + userId +
-                ", emailId='" + emailId + '\'' +
+                ", emailId='" + email + '\'' +
                 ", isActive=" + isActive +
                 ", password='" + password + '\'' +
                 ", registrationDate=" + registrationDate +
