@@ -167,7 +167,7 @@ public class JobSeekerProfile {
     }
 
     @Transient
-    public String getPhotosImagePath(){
+    public String getPhotosImagePath() {
         if(profilePhoto == null || userAccountId == null){
             return null;
         }

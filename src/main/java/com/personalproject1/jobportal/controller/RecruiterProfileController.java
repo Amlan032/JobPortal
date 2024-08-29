@@ -64,14 +64,16 @@ public class RecruiterProfileController {
         model.addAttribute("profile", recruiterProfile);
         //add support for image upload
         String imageFileName = "";
-        if(!(image.getOriginalFilename().equals(""))){
+        if(!(Objects.equals(image.getOriginalFilename(),""))){
             imageFileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
             recruiterProfile.setProfilePhoto(imageFileName);
         }
         RecruiterProfile savedRecruiterProfile = recruiterProfileService.addNewRecruiter(recruiterProfile);
-        String uploadDir = "photos/recruiter/"+savedRecruiterProfile.getUserAccountId();
         try{
-            FileUploadUtil.saveFile(uploadDir, imageFileName, image);
+            String uploadDir = "photos/recruiter/"+savedRecruiterProfile.getUserAccountId();
+            if(!(Objects.equals(image.getOriginalFilename(), ""))){
+                FileUploadUtil.saveFile(uploadDir, imageFileName, image);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
