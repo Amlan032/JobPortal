@@ -156,7 +156,6 @@ public class JobPostActivityController {
             }
         }
         model.addAttribute("user", currentUserProfile);
-        System.out.println("DashBoard : "+getClass().getSimpleName());
         return "dashboard";
     }
 

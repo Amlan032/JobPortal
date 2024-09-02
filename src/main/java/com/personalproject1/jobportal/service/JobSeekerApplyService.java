@@ -29,4 +29,8 @@ public class JobSeekerApplyService {
     public void addNew(JobSeekerApply jobSeekerApply) {
         jobSeekerApplyRepository.save(jobSeekerApply);
     }
+
+    public void delete(JobSeekerApply jobSeekerApply){
+        jobSeekerApplyRepository.delete(jobSeekerApply);
+    }
 }

@@ -57,4 +57,8 @@ public class JobPostActivityService {
         }
         return jobPostActivityRepository.searchWithDate(job, location, jobType, jobRemoteness, searchDate);
     }
+
+    public void deleteTheJob(JobPostActivity jobPostActivity){
+        jobPostActivityRepository.delete(jobPostActivity);
+    }
 }

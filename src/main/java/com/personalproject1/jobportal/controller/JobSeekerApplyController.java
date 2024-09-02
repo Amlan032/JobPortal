@@ -115,4 +115,26 @@ public class JobSeekerApplyController {
         model.addAttribute("user", usersService.getCurrentUserProfile());
         return "add-jobs";
     }
+
+    @PostMapping("/dashboard/deleteJob/{id}")
+    public String deleteJob(@PathVariable("id") int id){
+        JobPostActivity jobPostActivity = jobPostActivityService.getTheJob(id);
+
+        List<JobSeekerApply> jobSeekerApplyList = jobSeekerApplyService.getJobSeekerApplyByJobId(jobPostActivity);
+        List<JobSeekerSave> jobSeekerSaveList = jobSeekerSaveService.getJobSeekerSaveByJobId(jobPostActivity);
+
+        //delete the JobSeekerApply entities associated with the job
+        for(JobSeekerApply jobSeekerApply : jobSeekerApplyList){
+            jobSeekerApplyService.delete(jobSeekerApply);
+        }
+
+        //delete the JobSeekerSave entities associated with the job
+        for(JobSeekerSave jobSeekerSave : jobSeekerSaveList){
+            jobSeekerSaveService.delete(jobSeekerSave);
+        }
+
+        //delete the job
+        jobPostActivityService.deleteTheJob(jobPostActivity);
+        return "redirect:/dashboard/";
+    }
 }

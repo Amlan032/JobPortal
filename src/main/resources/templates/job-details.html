@@ -192,7 +192,8 @@
                     </div>
                     <div class="col-md-3">
                         <form th:action="@{/dashboard/deleteJob/{id}(id=${jobDetails.jobPostId})}" method="post">
-                            <button class="btn-sec btn-black w-100" type="submit">Delete Job</button>
+                            <button class="btn-sec btn-black w-100" type="submit"
+                                    onclick="if (!(confirm('Are you sure you want to delete this job?'))) return false">Delete Job</button>
                         </form>
                     </div>
                 </div>
