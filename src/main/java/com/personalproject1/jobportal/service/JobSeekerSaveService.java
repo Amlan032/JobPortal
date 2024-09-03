@@ -34,4 +34,8 @@ public class JobSeekerSaveService {
     public void delete(JobSeekerSave jobSeekerSave){
         jobSeekerSaveRepository.delete(jobSeekerSave);
     }
+
+    public JobSeekerSave getJobSeekerSaveByJobAndUserId(JobPostActivity jobPostActivity, JobSeekerProfile jobSeekerProfile) {
+        return jobSeekerSaveRepository.findByUserAndJob(jobPostActivity.getJobPostId(), jobSeekerProfile.getUserAccountId());
+    }
 }

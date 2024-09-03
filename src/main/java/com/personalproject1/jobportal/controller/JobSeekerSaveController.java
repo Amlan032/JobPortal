@@ -58,6 +58,26 @@ public class JobSeekerSaveController {
         return "redirect:/dashboard/";
     }
 
+    @PostMapping("/job-details/unsave/{id}")
+    public String unsave(@PathVariable("id") int id, JobSeekerSave jobSeekerSave){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(!(authentication instanceof AnonymousAuthenticationToken)){
+            String username = authentication.getName();
+            Users user = usersService.findByEmail(username);
+            Optional<JobSeekerProfile> jobSeekerProfile = jobSeekerProfileService.findJobSeekerProfileById(user.getUserId());
+            JobPostActivity jobPostActivity = jobPostActivityService.getTheJob(id);
+            if(jobSeekerProfile.isPresent() && (jobPostActivity != null)){
+                jobSeekerSave = jobSeekerSaveService.getJobSeekerSaveByJobAndUserId(jobPostActivity, jobSeekerProfile.get());
+            }
+            else{
+                throw new RuntimeException("User Not Found");
+            }
+            System.out.println("Deleting Save Entity: "+jobSeekerSave);
+            jobSeekerSaveService.delete(jobSeekerSave);
+        }
+        return "redirect:/dashboard/";
+    }
+
     @GetMapping("/saved-jobs/")
     public String displaySavedJobs(Model model){
         List<JobPostActivity> jobPost = new ArrayList<>();

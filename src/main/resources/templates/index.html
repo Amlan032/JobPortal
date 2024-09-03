@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login HotDev Jobs</title>
+    <title>CareerWagon : Log In or Sign Up</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/font-awesome.min.css}"/>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styles.css}"/>
@@ -12,7 +12,7 @@
 <nav class="main_div">
     <div class="logo_left">
         <label class="logo">
-            hotdevjobs
+            CareerWagon
         </label>
         <label class="logo_com">
             .com
@@ -21,20 +21,14 @@
     <div class="logo_right">
         <label class="Candidate_login_btn">
             <a th:href="@{/login}">
-                Job Candidate Login
-            </a>
-            <a th:href="@{/register}">
-                /Register
+                Login
             </a>
         </label>
-        <label class="Recruiter_login_btn">
-            <a th:href="@{/login}">
-                Recruiter Login
-            </a>
-            <a th:href="@{/register}">
-                /Register
-            </a>
 
+        <label class="Recruiter_login_btn">
+            <a th:href="@{/register}">
+                 Sign Up
+            </a>
         </label>
     </div>
 </nav>
@@ -50,7 +44,7 @@
     </div>
 </form>
 <footer>
-    <label class="copy-right">Copyright © hotdevjobs.com</label>
+    <label class="copy-right">Copyright © careerwagon.com 2024</label>
 </footer>
 </body>
 

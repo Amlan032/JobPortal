@@ -20,7 +20,7 @@
 
 <header class="navbar navbar-expand-lg navbar-dark">
     <label class="mt-2 ms-5 font-weight-bold h5"
-    ><a th:href="@{/dashboard/}">hotdevjobs</a
+    ><a th:href="@{/dashboard/}">CareerWagon</a
     ><span class="logo_com font-weight-bold h5" style="color: white">
           .com</span
     ></label
@@ -170,13 +170,27 @@
                         </form>
                     </div>
                     <div class="col-md-3">
+<!--                        <form th:action="@{/job-details/save/{id}(id=${jobDetails.jobPostId})}" th:object="${applyJob}"-->
+<!--                              method="post">-->
+<!--                            <button class="btn-sec btn-black w-100" type="submit" th:if="${alreadySaved == false}">Save-->
+<!--                                Job-->
+<!--                            </button>-->
+<!--                            <button class="btn-sec btn-black w-100" disabled th:if="${alreadySaved == true}">Already-->
+<!--                                Saved-->
+<!--                            </button>-->
+<!--                        </form>-->
+
                         <form th:action="@{/job-details/save/{id}(id=${jobDetails.jobPostId})}" th:object="${applyJob}"
                               method="post">
                             <button class="btn-sec btn-black w-100" type="submit" th:if="${alreadySaved == false}">Save
                                 Job
                             </button>
-                            <button class="btn-sec btn-black w-100" disabled th:if="${alreadySaved == true}">Already
-                                Saved
+                        </form>
+
+                        <form th:action="@{/job-details/unsave/{id}(id=${jobDetails.jobPostId})}" th:object="${applyJob}"
+                              method="post">
+                            <button class="btn-sec btn-black w-100" type="submit" th:if="${alreadySaved == true}">Unsave
+                                Job
                             </button>
                         </form>
                     </div>

@@ -15,7 +15,7 @@ public class JobSeekerSave implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "job", referencedColumnName = "job_post_id")
     private JobPostActivity job;
 
